@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-api/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-api/v13-product-api/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-basic/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-cent-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-index-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-serch-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-serach-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-serach-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-item-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-temp/v13-springboot-rabbitmq/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-temp/v13-javamail/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-temp/v13-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-user-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-temp/v13-timed-task/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-temp/v13-node-test/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-common-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-api/v13-register-api/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-register-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-register-web/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-service/v13-sso-service/pom.xml" />
+        <option value="$PROJECT_DIR$/v13-web/v13-sso-web/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/v13-service/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

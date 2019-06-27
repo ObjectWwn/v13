@@ -1,0 +1,27 @@
+server:
+  port: 9095
+spring:
+  thymeleaf:
+    cache: false
+  mail:
+    host: smtp.qq.com
+    username: 1095838982@qq.com
+    password: zflqdtpehkaojhfj
+    default-encoding: utf-8
+    port: 25
+  redis:
+    host: 192.168.84.128
+    port: 6379
+    password: wwn
+    jedis:
+      pool:
+        max-idle: 10
+        max-active: 100
+        max-wait: 100000
+
+dubbo:
+  application:
+    name: user-web
+  registry:
+    protocol: zookeeper
+    address: 192.168.84.128:2181

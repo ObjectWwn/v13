@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.v13.mapper.TUserMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.v13.entity.TUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="CHAR" property="username" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="isActivate" jdbcType="BIT" property="isactivate" />
+    <result column="email" jdbcType="CHAR" property="email" />
+    <result column="code" jdbcType="CHAR" property="code" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, password, isActivate, email, code
+  </sql>
+  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select username,password from t_user
+    where username= #{username}
+    and isActivate=1
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.v13.entity.TUser">
+    insert into t_user (id, username, password, 
+      isActivate, email, code)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=CHAR}, #{password,jdbcType=CHAR}, 
+      #{isactivate,jdbcType=BIT}, #{email,jdbcType=CHAR}, #{code,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.v13.entity.TUser" keyProperty="id" useGeneratedKeys="true">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="isactivate != null">
+        isActivate,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="isactivate != null">
+        #{isactivate,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.v13.entity.TUser">
+    update t_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="isactivate != null">
+        isActivate = #{isactivate,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.v13.entity.TUser">
+    update t_user
+    set username = #{username,jdbcType=CHAR},
+      password = #{password,jdbcType=CHAR},
+      isActivate = #{isactivate,jdbcType=BIT},
+      email = #{email,jdbcType=CHAR},
+      code = #{code,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

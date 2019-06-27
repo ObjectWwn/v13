@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/v13-service/v13-common-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-service/v13-product-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-service/v13-register-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-service/v13-serach-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-service/v13-sso-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-temp/v13-javamail" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-temp/v13-node-test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-temp/v13-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-temp/v13-springboot-rabbitmq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-temp/v13-timed-task" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-cent-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-index-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-item-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-register-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-serach-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/v13-web/v13-sso-web" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

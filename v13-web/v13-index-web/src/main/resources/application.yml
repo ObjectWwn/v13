@@ -1,0 +1,12 @@
+server:
+  port: 9091
+
+dubbo:
+  application:
+    name: product-cent-web
+  registry:
+    protocol: zookeeper
+    address: 192.168.84.128:2181
+spring:
+  thymeleaf:
+    cache: false
