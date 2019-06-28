@@ -7,11 +7,10 @@ import com.qianfeng.IBaseDao;
 import com.qianfeng.login.ISsoService;
 import com.qianfeng.v13.entity.TUser;
 import com.qianfeng.v13.mapper.TUserMapper;
+import com.qianfeng.v13ssoservice.Utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author wwn
@@ -37,15 +36,12 @@ public class SsoServiceImpl extends BaseServiceImpl<TUser> implements ISsoServic
         TUser tUser = userMapper.selectByUsername(user.getUsername());
         if(user.getPassword().equals(tUser.getPassword())){
             //用户合法
-            //保存凭证在redis中
-            String uuid = UUID.randomUUID().toString();
-            String key = new StringBuilder("user:token:").append(uuid).toString();
-            //去掉密码
-            user.setPassword(null);
-            //设置有效期,30分钟
-            redisTemplate.opsForValue().set(key,user);
-            redisTemplate.expire(key,30, TimeUnit.MINUTES);
-            return  new ResultBean("200", uuid);
+            JwtUtils jwtUtils = new JwtUtils();
+            jwtUtils.setSecretKey("java1902");
+            jwtUtils.setTtl(30*60*1000);
+            String jwtToken = jwtUtils.createJwtToken(tUser.getId().toString(), tUser.getUsername());
+            //传回令牌
+            return  new ResultBean("200", jwtToken);
         }
         return new ResultBean("404","");
     }
@@ -53,20 +49,25 @@ public class SsoServiceImpl extends BaseServiceImpl<TUser> implements ISsoServic
     //
     @Override
     public ResultBean checkIsLogin(String uuid) {
-        //1.组装key
-        String key = new StringBuilder("user:token:").append(uuid).toString();
-        //2，查询
-        TUser currentUser = (TUser) redisTemplate.opsForValue().get(key);
-        if (currentUser!=null){
-            //4.刷新凭证的有效期
-            redisTemplate.expire(key,30,TimeUnit.MINUTES);
-            return new ResultBean("200",currentUser);
+        try {
+            JwtUtils jwtUtils = new JwtUtils();
+            jwtUtils.setSecretKey("java1902");
+            jwtUtils.setTtl(30*60*1000);
+            Claims claims = jwtUtils.parseJwtToken(uuid);
+            System.out.println("剩余时间"+claims.getIssuedAt());//剩余时间
+            //新的token
+            String jwtToken = jwtUtils.createJwtToken(claims.getId(), claims.getSubject());
+            //还要刷新有效时间
+            return new ResultBean("200",jwtToken);
+        } catch (Exception e){
+            //令牌过期或不正确
+            return new ResultBean("404","");
         }
-        return new ResultBean("404","");
+
     }
 
     //删除
-    @Override
+   /* @Override
     public ResultBean logout(String uuid) {
         //1.拼接key
         String key = new StringBuilder("user:token:").append(uuid).toString();
@@ -78,5 +79,5 @@ public class SsoServiceImpl extends BaseServiceImpl<TUser> implements ISsoServic
             new ResultBean("404","删除失败");
         }
         return null;
-    }
+    }*/
 }

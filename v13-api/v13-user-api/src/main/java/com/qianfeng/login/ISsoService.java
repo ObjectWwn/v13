@@ -14,5 +14,5 @@ public interface ISsoService  extends IBaseService<TUser> {
 
     ResultBean checkIsLogin(String uuid);
 
-    ResultBean logout(String uuid);
+    //ResultBean logout(String uuid);
 }

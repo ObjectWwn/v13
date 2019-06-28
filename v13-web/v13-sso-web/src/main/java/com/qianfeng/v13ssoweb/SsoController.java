@@ -66,12 +66,28 @@ public class SsoController {
 
     @RequestMapping("checkIsLogin2")
     @ResponseBody
-    public ResultBean checkIsLogin2(@CookieValue(name = "user_token",required = false) String uuid){
+    public ResultBean checkIsLogin2(@CookieValue(name = "user_token",required = false)
+                                                String uuid,
+                                    HttpServletResponse response
+                                    ){
         //简化获取cookie的方式
         //1.解析cookie，获取到凭证信息uuid
         if(uuid != null){
             System.out.println(uuid);
-            return ssoService.checkIsLogin(uuid);
+            //return ssoService.checkIsLogin(uuid);
+            ResultBean resultBean = ssoService.checkIsLogin(uuid);
+            //验证登录成功，把修改了时间的token重新放在cookie中
+            if ("200".equals(resultBean.getStatusCode())){
+                Cookie cookie = new Cookie("user_token",resultBean.getData().toString());
+                cookie.setPath("/");
+                //只有后端可以访问cookie
+                cookie.setHttpOnly(true);
+                //将这个cookie写到客户端
+                response.addCookie(cookie);
+                System.out.println("checkIsLogin2");
+               return resultBean;
+            }
+
         }
         //3.返回找不到的结果
         return new ResultBean("404",null);
@@ -92,7 +108,8 @@ public class SsoController {
             //把cookie写到客户端
             response.addCookie(cookie);
             //删除redis的凭证
-            return ssoService.logout(uuid);
+            //return ssoService.logout(uuid);
+            return new ResultBean("200","注销成功！");
         }
         return new ResultBean("404","注销失败！");
     }
