@@ -11,6 +11,7 @@ import com.qianfeng.v13ssoservice.Utils.JwtUtils;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @Author wwn
@@ -18,6 +19,10 @@ import org.springframework.data.redis.core.RedisTemplate;
  */
 @Service
 public class SsoServiceImpl extends BaseServiceImpl<TUser> implements ISsoService {
+
+    //加密
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private TUserMapper  userMapper;
@@ -34,7 +39,10 @@ public class SsoServiceImpl extends BaseServiceImpl<TUser> implements ISsoServic
     @Override
     public ResultBean checkLogin(TUser user) {
         TUser tUser = userMapper.selectByUsername(user.getUsername());
-        if(user.getPassword().equals(tUser.getPassword())){
+        //前台的密码与后台的密文比较,顺序一定不能错
+        //Encoded password does not look like BCrypt
+        boolean matches = bCryptPasswordEncoder.matches(user.getPassword(), tUser.getPassword());
+        if(matches){
             //用户合法
             JwtUtils jwtUtils = new JwtUtils();
             jwtUtils.setSecretKey("java1902");

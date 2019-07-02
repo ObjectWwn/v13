@@ -12,8 +12,8 @@
   <sql id="Base_Column_List">
     id, username, password, isActivate, email, code
   </sql>
-  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
-     select username,password from t_user
+  <select id="selectByUsername" parameterType="java.lang.String"  resultMap="BaseResultMap">
+     select id,username,password from t_user
     where username= #{username}
     and isActivate=1
   </select>

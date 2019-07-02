@@ -31,6 +31,8 @@ public class UserController {
 
     private String form="1095838982@qq.com";
 
+
+
     @Autowired
     private JavaMailSender sender;
 
@@ -50,19 +52,6 @@ public class UserController {
         return "register";
     }
 
-    //登陆
-    @RequestMapping("login")
-    public  String islogin(String uuid,String email,String password){
-        Long id = (long) redisTemplate.opsForValue().get(uuid);
-        if (id!=null){
-            TUser tUser = userService.selectByPrimaryKey(id);
-           if (tUser.getPassword().equals(password)&&tUser.getEmail().equals(email)){
-               return "";//成功
-           }
-
-        }
-        return "";
-    }
 
     //注册
     @ResponseBody
@@ -99,7 +88,7 @@ public class UserController {
         user.setIsactivate(true);
         userService.updateByPrimaryKeySelective(user);
         model.addAttribute("uuid",uuid);
-        return "login";
+        return "redirect:http://localhost:9096/sso/showLogin";
     }
 
     //发送验证码

@@ -3,6 +3,7 @@ server:
 spring:
   thymeleaf:
     cache: false
+
   mail:
     host: smtp.qq.com
     username: 1095838982@qq.com
@@ -21,7 +22,7 @@ spring:
 
 dubbo:
   application:
-    name: user-web
+    name: register-web
   registry:
     protocol: zookeeper
     address: 192.168.84.128:2181

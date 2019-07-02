@@ -7,6 +7,7 @@ import com.qianfeng.user.IUserService;
 import com.qianfeng.v13.entity.TUser;
 import com.qianfeng.v13.mapper.TUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @Author wwn
@@ -14,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl<TUser> implements IUserService {
+    //加密
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private TUserMapper userMapper;
@@ -25,7 +29,9 @@ public class UserServiceImpl extends BaseServiceImpl<TUser> implements IUserServ
 
     @Override
     public int insertSelective(TUser record) {
-        //System.out.println("1"+record.getId());null
+        //加密
+        String encode = bCryptPasswordEncoder.encode(record.getPassword());
+        record.setPassword(encode);
          super.insertSelective(record);
        // System.out.println("2"+record.getId());id回填了
         return  record.getId();

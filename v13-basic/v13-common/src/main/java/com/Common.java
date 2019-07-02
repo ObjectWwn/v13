@@ -6,4 +6,6 @@ package com;
  */
 public class Common {
     public final  static  String USER_TOKEN ="user:token:";
+
+    public final static  String USER_CART="user:cart:";
 }

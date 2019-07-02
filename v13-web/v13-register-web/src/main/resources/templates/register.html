@@ -5,7 +5,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <base href="/">
-    <title>登录</title>
+    <title>注册</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/shopping-mall-index.css" />
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -112,7 +112,7 @@
         <input type="checkbox" name="hobby"></input>
         <p>我有阅读并同意<span>《宅客微购网站服务协议》</span></p>
     </div>
-    <button  type="button" class="psw-btn" id="register">立即注册</button>
+    <button  class="psw-btn" id="register">立即注册</button>
     <p class="sign-in">已有账号？请<a href="#">登录</a></p>
 </div>
 </form>
@@ -200,17 +200,18 @@
             })
         });
 
-        $("#register").click(function () {
+       // $("#register").click(function () {
+           // $("#user").serialize();
            // var username = $("#username").val();
-            $.ajax({
+           /* $.ajax({
                 url:$("#user").serialize(),
                 type:"post",
                 success:function (data) {
                     alert("注册成功,请在登录之前前往"+email+"激活");
                    // window.location.href="user/login";
                 }
-            })
-        })
+            })*/
+       // })
 
 
     })

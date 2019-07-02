@@ -3,6 +3,21 @@ package com.qianfeng.v13.entity;
 import java.io.Serializable;
 
 public class TProduct implements Serializable {
+    @Override
+    public String toString() {
+        return "TProduct{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", salePrice=" + salePrice +
+                ", images='" + images + '\'' +
+                ", salePoint='" + salePoint + '\'' +
+                ", typeId=" + typeId +
+                ", typeName='" + typeName + '\'' +
+                ", flag=" + flag +
+                '}';
+    }
+
     private Long id;
 
     private String name;

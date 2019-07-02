@@ -19,7 +19,12 @@
     </properties>
 
     <dependencies>
-        <!--JJWT-->
+        <!--password加密加盐-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--JJWT生成token-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>

@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <!--JJWT-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

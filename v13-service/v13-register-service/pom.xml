@@ -19,6 +19,12 @@
     </properties>
 
     <dependencies>
+        <!--加密-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.qianfeng</groupId>
             <artifactId>v13-mapper</artifactId>
